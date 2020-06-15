@@ -1,13 +1,14 @@
 import React from 'react'
 import Navbar from './Navbar'
-import Admid from './Admin/Admin'
+import Footer from './Footer'
 
 const Homepage =()=>{
     return(
         <div>
+            
             <Navbar/>
-            <Admid/>
-         <h1>yooooooooo</h1>
+  
+            <Footer/> 
         </div>
     )
 }

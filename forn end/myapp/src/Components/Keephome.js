@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const Keephome =()=> {
-    let url = 'https://newhome.sixgeat1997.now.sh/home?fbclid=IwAR3aH8ezqpoC-t0nVUJ9d8mrSo_im4GobPdB0QMOUf8WIJh2PyGt5-NeoNo'   
+    let url = 'https://newhome.sixgeat1997.now.sh/home'   
     const [myhome, setMyhome] = useState({})
    
     useEffect(()=>{

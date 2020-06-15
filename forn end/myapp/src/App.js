@@ -3,6 +3,11 @@ import logo from './logo.svg';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Keephome from './Components/Keephome';
 import Homepage from './Components/Homepage';
+import List from './Components/List'
+import Listcondo from './Components/Listcondo';
+import Building from './Components/Building';
+import Townhouse from './Components/Townhouse';
+import Addlist from './Components/Addlist';
 
 
 
@@ -12,7 +17,12 @@ function App() {
       <Switch>
 
         <Route exact path="/" component={Homepage} />
-        <Route exact path='/keephome' component={Keephome}/>
+        <Route  path='/addlist' component={Addlist}/>
+        <Route  path='/keephome' component={Keephome}/>
+        <Route  path='/listhome' component={List}/>
+        <Route  path='/listcondo' component={Listcondo}/>
+        <Route  path='/building' component={Building}/>
+        <Route  path='/townhouse' component={Townhouse}/>
      
     
 
