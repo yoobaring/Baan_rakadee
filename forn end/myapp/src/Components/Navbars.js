@@ -52,9 +52,9 @@ const Navbars =()=> {
                       <div className="author__access_area">
                         <ul className="d-flex list-unstyled align-items-center">
                           <li>
-                            <a href className="btn btn-xs btn-gradient btn-gradient-two" data-toggle="modal" data-target="#login_modal">เข้าสู่ระบบ</a>
+                            <a href="/login" className="btn btn-xs btn-gradient btn-gradient-two">เข้าสู่ระบบ</a>
                             &nbsp; 
-                            <a href className="btn btn-xs btn-gradient btn-gradient-two" data-toggle="modal" data-target="#signup_modal">สมัครสมาชิก</a>
+                            <a href="/signup" className="btn btn-xs btn-gradient btn-gradient-two">สมัครสมาชิก</a>
                           </li>
                         </ul>
                       </div>
@@ -96,21 +96,7 @@ const Navbars =()=> {
       {/* end  */}
     </div>
   </div>{/* ends: .mainmenu-wrapper */}
-  <div className="breadcrumb-wrapper content_above">
-    <div className="container">
-      <div className="row">
-        <div className="col-lg-12 text-center">
-          <h1 className="page-title">ลงประกาศ</h1>
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item"><a href="/">หน้าหลัก</a></li>
-              <li className="breadcrumb-item active" aria-current="page">รายการทั้งหมด</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </div>{/* ends: .breadcrumb-wrapper */}
+  
 </section>
 </div>
     )

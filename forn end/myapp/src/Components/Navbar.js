@@ -55,9 +55,9 @@ const Navbar =()=>{
                         <div className="author__access_area">
                           <ul className="d-flex list-unstyled align-items-center">
                             <li>
-                              <a href className="btn btn-xs btn-gradient btn-gradient-two" data-toggle="modal" data-target="#login_modal">เข้าสู่ระบบ</a>
+                              <a href="/login" className="btn btn-xs btn-gradient btn-gradient-two" >เข้าสู่ระบบ</a>
                               &nbsp; 
-                              <a href className="btn btn-xs btn-gradient btn-gradient-two" data-toggle="modal" data-target="#signup_modal">สมัครสมาชิก</a>
+                              <a href="/signup" className="btn btn-xs btn-gradient btn-gradient-two" >สมัครสมาชิก</a>
                             </li>
                           </ul>
                         </div>
@@ -103,7 +103,8 @@ const Navbar =()=>{
               <form action="/" className="search_form">
                 <div className="atbd_seach_fields_wrapper">
                   <div className="single_search_field search_query">
-                    <input className="form-control search_fields" type="text" placeholder="ค้นหาทุกสถานที่ พิมพ์จังหวัด" />
+                    <input className="form-control search_fields locator " type="text" placeholder="ค้นหาทุกสถานที่ พิมพ์จังหวัด" />
+                
                   </div>
                   <div className="single_search_field search_category">
                     <select className="search_fields" id="at_biz_dir-category">

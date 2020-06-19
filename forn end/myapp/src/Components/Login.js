@@ -1,10 +1,13 @@
 import React from 'react'
+import Navbars from './Navbars';
+import Footer from './Footer';
 
 const Login =()=> {
     return (
         
 <div>
-  <div className="modal fade" id="login_modal" tabIndex={-1} role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+<Navbars/>
+  <div id="login_modal" tabIndex={-1} role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
     <div className="modal-dialog modal-dialog-centered" role="document">
       <div className="modal-content">
         <div className="modal-header">
@@ -28,10 +31,7 @@ const Login =()=> {
               <li>ไม่ใช่สมาชิก <a href>ลงชื่อ</a></li>
               <li><a href>กู้คืนรหัสผ่าน</a></li>
             </ul>
-            <div className="social-login">
-              <span>หรือ เชื่อมต่อกับ</span>
-              <p><a href className="btn btn-outline-secondary"><i className="fab fa-facebook-f" /> Facebook</a><a href className="btn btn-outline-danger"><i className="fab fa-google-plus-g" /> Google</a></p>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -43,39 +43,3 @@ const Login =()=> {
 export default Login ;
 
 
-const Logout =()=> {
-    return (
-
-<div className="modal fade" id="signup_modal" tabIndex={-1} role="dialog" aria-labelledby="signup_modal_label" aria-hidden="true">
-    <div className="modal-dialog modal-dialog-centered" role="document">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h5 className="modal-title" id="signup_modal_label"><i className="la la-lock" /> ลงชื่อ</h5>
-          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div className="modal-body">
-          <form action="/" id="signup-form">
-            <input type="email" className="form-control" placeholder="อีเมล์" required />
-            <input type="password" className="form-control" placeholder="รหัสผ่าน" required />
-            <button type="submit" className="btn btn-block btn-lg btn-gradient btn-gradient-two">ลงชื่อ</button>
-          </form>
-          <div className="form-excerpts">
-            <ul className="list-unstyled">
-              <li>เป็นสมาชิกแล้ว? <a href>เข้าสู่ระบบ</a></li>
-              <li><a href>กู้คืนรหัสผ่าน</a></li>
-            </ul>
-            <div className="social-login">
-              <span>หรือ ลงชื่อกับ</span>
-              <p><a href className="btn btn-outline-secondary"><i className="fab fa-facebook-f" /> Facebook</a><a href className="btn btn-outline-danger"><i className="fab fa-google-plus-g" /> Google</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
-    )
-}
-
-export default Logout;

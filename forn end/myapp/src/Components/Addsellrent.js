@@ -3,7 +3,7 @@ import React from 'react'
 const Addsellrent =()=> {
     return (
         <div>
-            <section className="add-listing-wrapper border-bottom section-bg section-padding-strict">
+<section className="add-listing-wrapper border-bottom section-bg section-padding-strict">
   <div className="container">
     <div className="row">
       <div className="col-lg-10 offset-lg-1">
