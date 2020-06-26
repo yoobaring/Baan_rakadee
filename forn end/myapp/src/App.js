@@ -10,6 +10,8 @@ import Townhouse from './Components/Townhouse';
 import Addlist from './Components/Addlist';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
+import Search from './Components/Search';
+import Admin from './Components/Admin';
 
 
 
@@ -26,7 +28,11 @@ function App() {
         <Route  path='/building' component={Building}/>
         <Route  path='/townhouse' component={Townhouse}/>
         <Route  path='/login' component={Login}/>
-        <Route  path='/signup' component={Signup}/>     
+        <Route  path='/signup' component={Signup}/>
+        <Route  path='/search' component={Search}/>
+        <Route  path='/admin' component={Admin}/>
+        <Route  path='/text' component={Text}/> 
+
     
 
        

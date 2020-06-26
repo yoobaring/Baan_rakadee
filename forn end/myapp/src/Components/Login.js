@@ -1,8 +1,48 @@
 import React from 'react'
 import Navbars from './Navbars';
 import Footer from './Footer';
+import Admin from './Admin';
+// import { connect } from 'react-redux';
+import axios from 'axios';
 
-const Login =()=> {
+
+class Login extends React.Component {
+  constructor(props) {
+    super(props); 
+    this.login=this.login.bind(this);
+    this.state={
+      username:"",
+      password:""
+    }
+  }
+  login=()=>{
+    alert('กำลัง Login');
+    axios.post("https://apiminiyoo.herokuapp.com/api/Users/login/",{email: this.state.email,password: this.state.password})
+    .catch((error)=>{
+    alert('ป้อนอีเมล์หรือรหัสผ่านผิด โปรดพยายามลองใหม่อีกครั้ง');
+    this.props.history.push("/login");
+    })
+    .then((response)=>{
+      console.log(response);
+      this.props.history.push("/");
+      sessionStorage.setItem("username",this.state.username);
+      sessionStorage.setItem("login_access_token",response.data.id);
+      sessionStorage.setItem("login_created",response.data.created);
+      sessionStorage.setItem("login_userId",response.data.userId);
+      this.props.dispatch({
+        type:"login",
+        login_email: this.state.email
+      })
+    })
+  }
+  
+  handleChange=(event)=>{
+    console.log(event.target.name)
+    this.setState({[event.target.name]:event.target.value});
+    }
+
+
+render () {
     return (
         
 <div>
@@ -37,9 +77,11 @@ const Login =()=> {
       </div>
     </div>
   </div>
+
 </div>
     )
 }
-export default Login ;
+}
+export default Login;
 
 

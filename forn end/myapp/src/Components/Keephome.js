@@ -66,7 +66,7 @@ const Keephome =()=> {
                               <div className="atbd_listing_bottom_content" >
                                 <div className="atbd_content_left">
                                   <div className="atbd_listing_category">
-                                    <a href><span className="la la-glass" />{keephome.category}</a>
+                                    <a href><span className="la la-glass" />{keephome.province}</a>
                                   </div>
                                 </div>
                                 <ul className="atbd_content_right">

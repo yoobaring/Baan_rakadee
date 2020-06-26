@@ -1,198 +1,69 @@
-import React, { useState, useEffect } from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
+import PostForm from './PostFrom'
+class Admin extends Component {
+	constructor(props) {
+		super(props)
 
-const Admin =()=> {
-    let url = 'http://localhost:3001/home'   
-    const [myhome, setMyhome] = useState([])
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [latitude, setLatitide] = useState('')
-    const [longitude, setLongitude] = useState('')
-    const [tel, setTel] = useState('')
-    const [price, setPrice] = useState('')
-    const [area, setArea] = useState('')
-    const [type, setType] = useState('')
-    const [category, setCategory] = useState('')
+		this.state = {
+      posts: [],
+      errorMsg: ''
+		}
+	}
 
-    useEffect(()=>{
-        getMyhome()
-    },[])
-
-    const getMyhome = async () => {
-        const result = await axios.get(url)
-        setMyhome(result.data)
-        console.log(result.data)
+	componentDidMount() {
+		axios
+			.get('http://ok-myhome.herokuapp.com/api/home')
+			.then(response => {
+				console.log(response)
+				this.setState({ posts: response.data })
+			})
+			.catch(error => {
+        console.log(error)
+        this.setState({errorMsg: 'Error retrieving data'})
+			})
+    }
+    
+    deleteHandler = e => {
+        console.log(this.state)
+		axios
+			.delete(`http://ok-myhome.herokuapp.com/api/home/edit/${7}`, this.state)
+			.then(response => {
+				console.log(response)
+			})
+			.catch(error => {
+				console.log(error)
+			})
     }
 
-    const addAdmin = async () => {
-        const result = await axios.post(url,{
-            name,
-            description,
-            latitude,
-            longitude,
-            tel,
-            price,
-            area,
-            type,
-            category
-        }) 
-        getMyhome()
-      
-    }
+	render() {
+		const { posts, errorMsg } = this.state
+		return (
+			<div>
+				List of posts
+				{posts.length
+					? posts.map(post => <div key={post.id}>
+                    {post.id+1} : 
+                    {post._id} :
+                    {post.name} :
+                    {post.des} :
+                    {post.latitude} : 
+                    {post.longitude} :
+                    {post.area} :
+                    {post.category} :
+                    {post.price} :
+                    {post.province} :
+                    {post.tel} :
+                    {post.type} : 
+                    {post.date} :</div>) : null}
+        {errorMsg ? <div>{errorMsg}</div> : null}
+        <button onClick={ ()=> this.deleteHandler(posts.id)}>DELETE</button>
+        <PostForm/>
 
-    const getAdmin = async (id) => {
-        const result = await axios.get(`http://localhost:3001/home/${id}`)
-        setName(result.data.name)
-        setDescription(result.data.description)
-        setLatitide(result.data.latitude)
-        setLongitude(result.data.longitude)
-        setTel(result.data.tel)
-        setPrice(result.data.price)
-        setArea(result.data.area)
-        setType(result.data.type)
-        setCategory(result.data.category)
-    } 
+        
+			</div>
+		)
+	}
+}
 
-
-
-    const updateAdmin = async (id) => {
-        const result = await axios.put(`http://localhost:3001/edit/${id}`,{
-            name,
-            description,
-            latitude,
-            longitude,
-            tel,
-            price,
-            area,
-            type,
-            category
-
-        })
-        setName(result.data.name)
-        setDescription(result.data.description)
-        setLatitide(result.data.latitude)
-        setLongitude(result.data.longitude)
-        setTel(result.data.tel)
-        setPrice(result.data.price)
-        setArea(result.data.area)
-        setType(result.data.type)
-        setCategory(result.data.category)
-        getMyhome()
-    }
-
-    const deleteAdmin = async (id) => {
-        const result = await axios.delete(`http://localhost:3001/edit/${id}`)
-        getMyhome()
-    }   
-
-    const printAdmin = () => {
-        if ( myhome && myhome.length )
-            return myhome.map((admin,index) => {
-                return (
-                    <li key={index}>
-                       {admin.id+1}. {admin.name} : {admin.description} : {admin.tel} : {admin.latitude} :{admin.longitude} : {admin.price} : {admin.type} : {admin.category}
-                        <br/><button onClick={ ()=> getAdmin(admin.id)}>GET</button>
-                       <button onClick={ ()=> updateAdmin(admin.id)}>UPDATE</button> 
-                       <button onClick={ ()=> deleteAdmin(admin.id)}>DELETE</button>
-
-                    </li>
-                )
-             
-            })
-        else {
-            return (<h2>No Keephome </h2>)
-        }
-
-    }
-
-    return (
-        <div >
-           
-                {printAdmin()}
-          <br/>
-            
-           GET MY HOME : {name} {description} {tel} {latitude} {longitude} {price} {type} {area} {category} 
-
-           <br/>
-                <input 
-                onChange={(e)=> setName(e.target.value)}
-                type='text'
-                value={name}
-                name='name'
-                placeholder='Enter name'
-                /><br/>
-
-                <input
-                onChange={(e)=> setDescription(e.target.value)}
-                type='text'
-                value={description}
-                name='description'
-                placeholder='Enter description'
-                /><br/>
-
-                <input
-                onChange={(e)=> setTel(e.target.value)}
-                type='text'
-                value={tel}
-                name='tel'
-                placeholder='Enter tel'
-                /><br/>
-
-                <input
-                onChange={(e)=> setLatitide(e.target.value)}
-                type='text'
-                value={latitude}
-                name='latitude'
-                placeholder='Enter latitude'
-                /><br/>
-                
-                <input
-                onChange={(e)=> setLongitude(e.target.value)}
-                type='text'
-                value={longitude}
-                name='longitude'
-                placeholder='Enter longitude'
-                /><br/>
-
-
-                <input 
-                onChange={(e)=> setPrice(e.target.value)}
-                type='text'
-                value={price}
-                name='price'
-                placeholder='Enter price'
-                /><br/>
-
-               <input 
-                onChange={(e)=> setArea(e.target.value)}
-                type='text'
-                value={area}
-                name='area'
-                placeholder='Enter area'
-                /><br/>
-
-                <input 
-                onChange={(e)=> setType(e.target.value)}
-                type='text'
-                value={type}
-                name='type'
-                placeholder='Enter type'
-                /><br/>
-                
-                <input 
-                onChange={(e)=> setCategory(e.target.value)}
-                type='text'
-                value={category}
-                name='category'
-                placeholder='Enter category'
-                /><br/>
-
-                 <button  onClick={addAdmin}>ADD MY HOME</button>  
-        </div>
-    )
-  
- }
-
- export default Admin;
- 
- 
+export default Admin;

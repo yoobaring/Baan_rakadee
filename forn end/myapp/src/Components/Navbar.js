@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from './Search';
 
 
 const Navbar =()=>{
@@ -71,13 +72,7 @@ const Navbar =()=>{
                         <div className="author-avatar">
                           <img src="img/author-avatar.png" alt className="rounded-circle" />
                         </div>
-                        <ul className="list-unstyled">
-                          <li><a href="dashboard-listings.html">My Profile</a></li>
-                          <li><a href="dashboard-listings.html">My Listing</a></li>
-                          <li><a href="dashboard-listings.html">Favorite Listing</a></li>
-                          <li><a href="add-listing.html">Add Listing</a></li>
-                          <li><a href>Logout</a></li>
-                        </ul>
+
              
                       </div>{/* ends: .author-info */}
                     </div>{/* ends: .offcanvas-menu */}
@@ -123,7 +118,7 @@ const Navbar =()=>{
                     </select>
                   </div>
                   <div className="atbd_submit_btn">
-                    <button type="submit" className="btn btn-block btn-gradient btn-gradient-one btn-md btn_search">ค้นหา</button>
+                    <button type="submit" className="btn btn-block btn-gradient btn-gradient-one btn-md btn_search" onClick={Search}>ค้นหา</button>
                   </div>
                 </div>
               </form>{/* ends: .search_form */}
